@@ -1,4 +1,4 @@
-module github.com/techschool/simplebank
+module github.com/0abdullahbhutto0/bank_backend
 
 go 1.25.6
 
