@@ -46,8 +46,6 @@ jobs:
     - name: Run Migrations
       run: make migrateup
 
-    - name: Create env file
-      run: cp app.env.example app.env
     
     - name: Test
       run: make test
