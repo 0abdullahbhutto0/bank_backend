@@ -1,11 +1,9 @@
-# Bank Ledger API 🏦
+# Bank Ledger API
 
 A robust backend service for a banking ledger, built with Go and PostgreSQL. 
 
-Currently in active development.
-
 ## Tech Stack
-* **Language:** Go 1.26
+* **Language:** Go 1.25.6
 * **Database:** PostgreSQL (via Docker)
 * **DB Driver & Queries:** `pgx/v5` + `sqlc`
 * **Configuration:** Viper
