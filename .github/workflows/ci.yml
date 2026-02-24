@@ -45,7 +45,9 @@ jobs:
         which migrate
     - name: Run Migrations
       run: make migrateup
-
+    
+    - name: Create dummy env file
+      run: touch app.env
     
     - name: Test
       run: make test
