@@ -6,17 +6,17 @@ import (
 
 	"github.com/0abdullahbhutto0/bank_backend/api"
 	db "github.com/0abdullahbhutto0/bank_backend/db/sqlc"
+	"github.com/0abdullahbhutto0/bank_backend/util"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
-const (
-	//dbDriver = "postgres"
-	dbSource      = "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable"
-	serverAddress = "0.0.0.0:8050"
-)
-
 func main() {
-	conn, err := pgxpool.New(context.Background(), dbSource)
+
+	config, err := util.LoadConfig(".")
+	if err != nil {
+		log.Fatal("Could not load config")
+	}
+	conn, err := pgxpool.New(context.Background(), config.DBSource)
 	if err != nil {
 		log.Fatal("Cannot Connect to the DB.", err)
 	}
@@ -24,7 +24,7 @@ func main() {
 	store := db.NewStore(conn)
 	server := api.NewServer(store)
 
-	err = server.Start(serverAddress)
+	err = server.Start(config.ServerAddress)
 	if err != nil {
 		log.Fatal("Cannot start server: ", err)
 	}

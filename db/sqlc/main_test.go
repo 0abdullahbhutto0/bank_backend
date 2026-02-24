@@ -6,20 +6,21 @@ import (
 	"os"
 	"testing"
 
+	"github.com/0abdullahbhutto0/bank_backend/util"
 	"github.com/jackc/pgx/v5/pgxpool"
-)
-
-const (
-	//dbDriver = "postgres"
-	dbSource = "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable"
 )
 
 var testQueries *Queries
 var testDB *pgxpool.Pool
 
 func TestMain(m *testing.M) {
+	config, erro := util.LoadConfig("../..")
+	if erro != nil {
+		log.Fatal("Could not load config", erro)
+	}
+
 	var err error
-	testDB, err = pgxpool.New(context.Background(), dbSource)
+	testDB, err = pgxpool.New(context.Background(), config.DBSource)
 	if err != nil {
 		log.Fatal("Cannot Connect to the DB.", err)
 	}
