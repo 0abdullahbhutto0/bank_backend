@@ -1,4 +1,4 @@
-# Bank Ledger API
+# Simple Bank Ledger API
 
 A robust backend service for a banking ledger, built with Go and PostgreSQL. 
 
